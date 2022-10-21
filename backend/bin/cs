@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+vendor/friendsofphp/php-cs-fixer/php-cs-fixer fix --allow-risky=yes
+vendor/bin/phpstan analyse -c phpstan.neon

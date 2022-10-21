@@ -1,0 +1,1 @@
+FROM resoglas/listing-base
