@@ -1,0 +1,17 @@
+security:
+  firewalls:
+    dev:
+      stateless: true
+      pattern: ^/(_(profiler|wdt)|css|images|js)/
+      security: false
+    main:
+      stateless: true
+      lazy: true
+      # provider that you set earlier inside providers
+      # provider: app_user_provider
+
+      # activate different ways to authenticate
+      # https://symfony.com/doc/current/security.html#firewalls-authentication
+
+      # https://symfony.com/doc/current/security/impersonating_user.html
+      # switch_user: true

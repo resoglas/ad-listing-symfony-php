@@ -1,0 +1,14 @@
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.php
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###
+
+###> symfony/framework-bundle ###
+/framework/.env.local
+/framework/.env.local.php
+/framework/.env.*.local
+/framework/config/secrets/prod/prod.decrypt.private.php
+/framework/public/bundles/
+/framework/var/
+/vendor/
+###< symfony/framework-bundle ###

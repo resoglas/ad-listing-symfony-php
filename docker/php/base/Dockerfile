@@ -7,8 +7,7 @@ RUN set -eux; \
             git \
     ;
 
-ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/download/install-php-extensions /usr/local/bin/install-php-extensions
-RUN chmod +rx /usr/local/bin/install-php-extensions
+COPY --from=mlocati/php-extension-installer /usr/bin/install-php-extensions /usr/local/bin/
 
 RUN install-php-extensions \
       intl \
@@ -21,16 +20,15 @@ RUN install-php-extensions \
       iconv \
     ;
 
-ADD https://github.com/composer/composer/releases/latest/download/composer.phar /usr/local/bin/composer
-RUN chmod +rx /usr/local/bin/composer
+COPY --from=composer /usr/bin/composer /usr/local/bin/
 
 RUN mv /usr/local/etc/php/php.ini-production /usr/local/etc/php/php.ini
 COPY docker/php/base/php.ini /usr/local/etc/php/conf.d/zz-overrides.ini
 
+COPY app/framework/config/preload.php /var/www/html/framework/config/preload.php
+
 WORKDIR /var/www/html
 
-COPY backend/config/preload.php /var/www/html/config/preload.php
-
-CMD ["php", "/var/www/html/public/index.php"]
+CMD ["php", "/var/www/html/framework/public/index.php"]
 
 EXPOSE 8080
